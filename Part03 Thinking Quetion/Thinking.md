@@ -1,4 +1,4 @@
-# Thinking
+#  Thinking
 
 ## 1. 除留余数法
 
@@ -23,7 +23,7 @@ JDK hashMap源码，hash表中数组位置的计算分两步：
    - 这样设计保证了对象的hashCode的32位值只要有一位发生改变，整个hash()返回值就会改变，高位的变化会反应到低位里，保证了hash值的随机性。
 
 2. 在插入或查找的时候，计算Key被映射到桶的位置：
-  
+
   ```Java
   int index = hash(key) & (capacity - 1);
   ```
