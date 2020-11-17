@@ -1,16 +1,3 @@
-# Array
-
-## Target 
-
->  - **数组的插入、删除、按照下标随机访问操作；**
->
->  - **数组中的数据是int类型的；**
-
-## Code
-
-### Java
-
-```java
 public class Array {
 
     // int array to sotre the dates
@@ -61,7 +48,7 @@ public class Array {
 
         // index is invalid
         // index 0 ~ count -1 : just can insert in the middle of array
-        if (index < 0 || index > this.count) {
+        if (index < 0 || index >= this.count) {
             System.out.println("Insert Failed !!! Index is invalid！Requires index 0 ~ " + this.count);
             return false;
         }
@@ -78,7 +65,7 @@ public class Array {
         // insert a new element, actual number + 1
         this.count++;
 
-        return true;
+        return ture;
     }
 
     // delete target element by index
@@ -101,9 +88,9 @@ public class Array {
         // function is repetitive, can omit...
         /*
          * int[] arr = new int[this.count - 1];
-         *
+         * 
          * for (int i = 0; i < this.count - 1; i++) { arr[i] = data[i]; }
-         *
+         * 
          * this.data = arr;
          */
 
@@ -116,21 +103,20 @@ public class Array {
     // display
     public void display() {
         for (int i = 0; i < this.count; i++) {
-            System.out.print(this.data[i] + "\t");
+            System.out.println(this.data[i] + " ");
         }
         System.out.println();
     }
 
     public static void main(String[] args) {
         Array array = new Array(5);
-        array.display();
+        array.printAll();
         array.insert(0, 3);
         array.insert(0, 4);
         array.insert(1, 5);
         array.insert(3, 9);
         array.insert(3, 10);
-        // array.insert(3, 11); // Array is full
-        array.display();
+        // array.insert(3, 11);
+        array.printAll();
     }
 }
-```

@@ -2,9 +2,17 @@
 
 ## Target
 
+中文：
+> - **实现一个支持动态扩容的数组**
+> - **实现一个大小固定的有序数组，支持动态增删改操作**
+> - **实现两个有序数组合并为一个有序数组**
+
+English:
 > - **general types**
 > - **dynamic expansion**
 > - **insert function's time complexity is O(m+n)**
+
+
 
 
 ## Code
@@ -245,31 +253,31 @@ public class GenericArray<T> {
 class GenericArray():
 
     # constructor
-    def __init__(self,capacity = 10):
-        self.__data = [None] * capacity # store elements to list
+    def __init__(self, capacity=10):
+        self.__data = [None] * capacity  # store elements to list
         self.__count = 0
 
     # get the array capacity
-    def getCapacity(self)->int:
+    def getCapacity(self) -> int:
         return len(self.__data)
 
     # get the number of elements in array
-    def getCount(self)->int:
+    def getCount(self) -> int:
         return self.__count
 
     # determine if array is empty
-    def isEmpty(self)->bool:
+    def isEmpty(self) -> bool:
         return self.__count == 0
 
     # change the element of index
-    def set(self,index:int, e):
-        if index <0 and index >= len(self.__data):
+    def set(self, index: int, e):
+        if index < 0 and index >= len(self.__data):
             print("Index is invalid !!! Require index index >= 0 and index < size.")
             return
         self.__data[index] = e
 
     # get the target data of index
-    def get(self,index:int):
+    def get(self, index: int):
         if index < 0 and index >= len(self.__data):
             print("Index is invalid !!! Require index index >= 0 and index < size.")
             return
@@ -279,7 +287,7 @@ class GenericArray():
     # if find it, return its index
     # otherwise, return -1
     # Time - Complexity : O(n)
-    def find(self,e)->int:
+    def find(self, e) -> int:
         for i in range((len(self.__data))):
             if self.__data[i] == e:
                 return i
@@ -287,10 +295,11 @@ class GenericArray():
 
     # add data in target index
     # Time - Complexity : O(m + n)
-    def add(self,index:int,e):
+    def add(self, index: int, e):
 
         if index < 0 and index > len(self.__data):
-            print("Add Faild!!! Index is invalid !!! Require index index >= 0 and index <= size.")
+            print(
+                "Add Faild!!! Index is invalid !!! Require index index >= 0 and index <= size.")
             return
 
         # determine the array is full
@@ -304,28 +313,29 @@ class GenericArray():
         i = self.__count - 1
         while i >= index:
             self.__data[i + 1] = self.__data[i]
-            i-=1
+            i -= 1
 
         self.__data[index] = e
         self.__count += 1
 
     # add data in head
-    def addHead(self,e):
-        self.add(0,e)
+    def addHead(self, e):
+        self.add(0, e)
 
     # add data in tail
-    def addTail(self,e):
-        self.add(self.__count,e)
+    def addTail(self, e):
+        self.add(self.__count, e)
 
     # delete data of taget index
     # and return its value
     # Time - Complexity: O(m + n)
-    def remove(self,index:int):
+    def remove(self, index: int):
         if index < 0 and index >= len(self.__data):
-            print("Delete Faild!!! Index is invalid !!! Require index index >= 0 and index < size.")
+            print(
+                "Delete Faild!!! Index is invalid !!! Require index index >= 0 and index < size.")
             return
 
-        ret = self.__data[index] # store the value of deleting data
+        ret = self.__data[index]  # store the value of deleting data
 
         # moving elements behind target index forward
         # Time - Complexity : O(m)
@@ -334,13 +344,13 @@ class GenericArray():
             self.__data[i-1] = self.__data[i]
             i += 1
 
-        self.__count-=1 # number - 1
-        self.__data[self.__count] = None # set the last element as None
+        self.__count -= 1  # number - 1
+        self.__data[self.__count] = None  # set the last element as None
 
         # when the number of elements meet the following coditions
         # reduce the capacity to a half of original size
         # Time - Complexity: O(n)
-        if self.__count == len(self.__data)/4 and len(self.__data)/2!=0:
+        if self.__count == len(self.__data)/4 and len(self.__data)/2 != 0:
             self.resize(len(self.__data)/2)
 
         return ret
@@ -354,8 +364,8 @@ class GenericArray():
         return self.remove(self.__count-1)
 
     # delete target element
-    def removeElement(self,e):
-        index = self.find(e) # get the element's index
+    def removeElement(self, e):
+        index = self.find(e)  # get the element's index
 
         # deter if teh index is valid
         if index != -1:
@@ -363,7 +373,7 @@ class GenericArray():
 
     # change the capactity of array
     # Time - Complexity : O(n)
-    def resize(self,capacity:int):
+    def resize(self, capacity: int):
 
         # set a new array with new capacity
         newData = [None] * capacity
@@ -377,25 +387,27 @@ class GenericArray():
 
     # print array
     def display(self):
-        print("Array size = {0}, capacity = {1}".format(self.__count,len(self.__data)))
-        print("[",end=' ')
+        print("Array size = {0}, capacity = {1}".format(
+            self.__count, len(self.__data)))
+        print("[", end=' ')
         i = 0
         while i < self.__count:
-            print(self.__data[i],end=' ')
-            if i != self.__count -1:
+            print(self.__data[i], end=' ')
+            if i != self.__count - 1:
                 print("", end=', ')
-            i+=1
+            i += 1
         print("]")
+
 
 if __name__ == "__main__":
 
     array = GenericArray(10)
     array.addHead(0)
     array.addHead(0)
-    array.add(1,5)
-    array.add(3,9)
-    array.add(3,10)
-    array.add(3,11)
+    array.add(1, 5)
+    array.add(3, 9)
+    array.add(3, 10)
+    array.add(3, 11)
     array.addTail(20)
 
     array.display()

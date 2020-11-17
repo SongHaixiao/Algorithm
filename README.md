@@ -9,4 +9,4 @@
 
 结合 Typora Markdown 编辑器 阅读效果更好.
 
-![](Resources1/64.jpg)
+![](64.jpg)
