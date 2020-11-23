@@ -1,3 +1,14 @@
+
+# Python Code
+
+'''
+    - Python data type is general types
+
+    - Python list can resize the capacity automatically
+
+    -  Insert function's time complexity is O(m + n) without  needing to resize the capacity
+'''
+
 class GenericArray():
 
     # constructor

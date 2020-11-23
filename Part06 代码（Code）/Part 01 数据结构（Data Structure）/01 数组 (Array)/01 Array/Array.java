@@ -1,16 +1,5 @@
-# Array
+// java code
 
-## Target 
-
->  - **数组的插入、删除、按照下标随机访问操作；**
->
->  - **数组中的数据是int类型的；**
-
-## Code
-
-### Java
-
-```java
 public class Array {
 
     // int array to sotre the dates
@@ -133,4 +122,3 @@ public class Array {
         array.display();
     }
 }
-```
